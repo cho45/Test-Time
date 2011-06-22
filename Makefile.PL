@@ -22,9 +22,9 @@ use inc::Module::Install;
 name 'Test-Time';
 all_from 'lib/Test/Time.pm';
 
-requires 'Exporter::Lite';
+# requires 'Exporter::Lite';
 
-build_requires 'Test::Most';
+build_requires 'Test::More';
 
 # Module::Install::AuthorTests
 author_tests('xt');

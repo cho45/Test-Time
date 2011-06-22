@@ -1,27 +1,23 @@
-This is Perl module Text::Xatena.
+NAME
+    Test::Time - Override time() and sleep() core function for tests.
 
-INSTALLATION
+SYNOPSIS
+      use Test::Time; # just use
 
-Test::Time installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+      time(); # fixed time
 
-    % cpan Test::Time
+      sleep 1; # increment internal time (return immediately)
+      time(); # incremented
 
-Download it, unpack it, then build it as per the usual:
+DESCRIPTION
+    Test::Time is for tests around time. You just use this module and your
+    tests are all "time safe".
 
-    % perl Makefile.PL
-    % make && make test
+AUTHOR
+    cho45 <cho45@lowreal.net>
 
-Then install it:
+SEE ALSO
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-    % make install
-
-DOCUMENTATION
-
-Test::Time documentation is available as in POD. So you can do:
-
-    % perldoc Test::Time
-
-to read the documentation online with your favorite pager.
-
-cho45
