@@ -25,6 +25,7 @@ all_from 'lib/Test/Time.pm';
 # requires 'Exporter::Lite';
 
 build_requires 'Test::More';
+build_requires 'Test::Name::FromLine';
 
 # Module::Install::AuthorTests
 author_tests('xt');
