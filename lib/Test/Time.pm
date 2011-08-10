@@ -48,21 +48,33 @@ __END__
 
 =head1 NAME
 
-Test::Time - Override time() and sleep() core function for tests.
+Test::Time - Overrides the time() and sleep() core functions for testing
 
 =head1 SYNOPSIS
 
-  use Test::Time; # just use
+    use Test::Time;
 
-  time(); # fixed time
+    # Freeze time
+    my $now = time();
 
-  sleep 1; # increment internal time (return immediately)
-  time(); # incremented
+    # Increment internal time (returns immediately)
+    sleep 1;
+
+    # Return internal time incremented by 1
+    my $then = time();
 
 
 =head1 DESCRIPTION
 
-Test::Time is for tests around time. You just use this module and your tests are all "time safe".
+Test::Time can be used to test modules that deal with time. Once you C<use> this 
+module, all references to C<time> and C<sleep> will be internalized. You can set
+custom time by passing time => number after the C<use> statement:
+
+    use Test::Time time => 1;
+
+    my $now = time;    # $now is equal to 1
+    sleep 300;         # returns immediately, displaying a note
+    my $then = time;   # $then equals to 301
 
 =head1 AUTHOR
 
