@@ -18,7 +18,7 @@ sub import {
 	my ($class, %opts) = @_;
 	$time = $opts{time} if defined $opts{time};
 
-	*CORE::GLOBAL::time = sub {
+	*CORE::GLOBAL::time = sub() {
 		if (in_effect) {
 			$time;
 		} else {
@@ -26,9 +26,9 @@ sub import {
 		}
 	};
 
-	*CORE::GLOBAL::sleep = sub {
+	*CORE::GLOBAL::sleep = sub(;$) {
 		if (in_effect) {
-			my $sleep = shift;
+			my $sleep = shift || 1;
 			$time += $sleep;
 			note "sleep $sleep";
 		} else {
