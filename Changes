@@ -2,6 +2,8 @@
 
 	* 0.02:
 	Fix Makefile.PL (by motemen)
+	* 0.03:
+	Add prototypes to overriden time and sleep (by naturalist)
 
 2011-06-23  SATOH Hiroh <cho45@lowreal.net>
 
