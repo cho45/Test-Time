@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $time = CORE::time();
 
 my $pkg = __PACKAGE__;
