@@ -1,4 +1,6 @@
 BEGIN {
+	use inc::Module::Install;
+
 	my @mip = qw(
 		Module::Install::AuthorTests
 		Module::Install::Repository
@@ -18,7 +20,6 @@ BEGIN {
 	}
 };
 
-use inc::Module::Install;
 name 'Test-Time';
 all_from 'lib/Test/Time.pm';
 
