@@ -16,6 +16,7 @@ sub in_effect {
 
 sub import {
 	my ($class, %opts) = @_;
+	$in_effect = 1;
 	$time = $opts{time} if defined $opts{time};
 
 	*CORE::GLOBAL::time = sub() {
