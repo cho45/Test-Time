@@ -14,36 +14,40 @@ sub in_effect {
 	$in_effect;
 }
 
+sub __time () {
+	if (in_effect) {
+		$time;
+	} else {
+		CORE::time();
+	}
+}
+
+sub __sleep (;$) {
+	if (in_effect) {
+		my $sleep = shift || 1;
+		$time += $sleep;
+		note "sleep $sleep";
+	} else {
+		CORE::sleep(shift);
+	}
+}
+
+sub __localtime (;$) {
+	my $arg = shift;
+	if (in_effect) {
+		$arg ||= $time;
+	}
+	return defined $arg ? CORE::localtime($arg) : CORE::localtime();
+}
+
 sub import {
 	my ($class, %opts) = @_;
 	$in_effect = 1;
 	$time = $opts{time} if defined $opts{time};
 
-	*CORE::GLOBAL::time = sub() {
-		if (in_effect) {
-			$time;
-		} else {
-			CORE::time();
-		}
-	};
-
-	*CORE::GLOBAL::sleep = sub(;$) {
-		if (in_effect) {
-			my $sleep = shift || 1;
-			$time += $sleep;
-			note "sleep $sleep";
-		} else {
-			CORE::sleep(shift);
-		}
-	};
-
-	*CORE::GLOBAL::localtime = sub(;$) {
-		my $arg = shift;
-		if (in_effect) {
-			$arg ||= $time;
-		}
-		return defined $arg ? CORE::localtime($arg) : CORE::localtime();
-	};
+	*CORE::GLOBAL::time = \&__time;
+	*CORE::GLOBAL::sleep = \&__sleep;
+	*CORE::GLOBAL::localtime = \&__localtime;
 };
 
 sub unimport {
