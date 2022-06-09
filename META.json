@@ -58,7 +58,8 @@
          "web" : "https://github.com/cho45/Test-Time"
       }
    },
-   "version" : "0.091",
+   "version" : "0.092",
+   "x_authority" : "cpan:SATOH",
    "x_contributors" : [
       "Alexandr Ciornii <alexchorny@gmail.com>",
       "AnaTofuZ <anatofuz@gmail.com>",
