@@ -1,1 +1,2 @@
+badges = ['github-actions/test.yml']
 module_maker = "ExtUtilsMakeMaker"

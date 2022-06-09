@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 our $time = CORE::time();
 
 my $pkg = __PACKAGE__;
@@ -79,7 +79,7 @@ Test::Time - Overrides the time() and sleep() core functions for testing
 
 =head1 DESCRIPTION
 
-Test::Time can be used to test modules that deal with time. Once you C<use> this 
+Test::Time can be used to test modules that deal with time. Once you C<use> this
 module, all references to C<time>, C<localtime> and C<sleep> will be internalized.
 You can set custom time by passing time => number after the C<use> statement:
 
