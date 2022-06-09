@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-our $VERSION = '0.09';
+our $VERSION = '0.091';
 our $time = CORE::time();
 
 my $pkg = __PACKAGE__;
@@ -14,7 +14,7 @@ sub in_effect {
 	$in_effect;
 }
 
-sub __time :prototype() {
+sub __time () {
 	if (in_effect) {
 		$time;
 	} else {
@@ -22,7 +22,7 @@ sub __time :prototype() {
 	}
 }
 
-sub __sleep :prototype(;$) {
+sub __sleep (;$) {
 	if (in_effect) {
 		my $sleep = shift || 1;
 		$time += $sleep;
@@ -32,7 +32,7 @@ sub __sleep :prototype(;$) {
 	}
 }
 
-sub __localtime :prototype(;$) {
+sub __localtime (;$) {
 	my $arg = shift;
 	if (in_effect) {
 		$arg ||= $time;

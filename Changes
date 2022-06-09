@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+0.091 2022-06-09T11:04:30Z
+	Fix prototype attributes for older perl versions
+
 0.09 2022-06-09T10:56:31Z
 	Avoid subroutine redefine warning when using with Devel::Cover (nanto #15)
 
