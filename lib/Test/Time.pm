@@ -14,7 +14,7 @@ sub in_effect {
 	$in_effect;
 }
 
-sub __time () {
+sub __time :prototype() {
 	if (in_effect) {
 		$time;
 	} else {
@@ -22,7 +22,7 @@ sub __time () {
 	}
 }
 
-sub __sleep (;$) {
+sub __sleep :prototype(;$) {
 	if (in_effect) {
 		my $sleep = shift || 1;
 		$time += $sleep;
@@ -32,7 +32,7 @@ sub __sleep (;$) {
 	}
 }
 
-sub __localtime (;$) {
+sub __localtime :prototype(;$) {
 	my $arg = shift;
 	if (in_effect) {
 		$arg ||= $time;
